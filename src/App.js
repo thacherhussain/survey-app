@@ -1,25 +1,78 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState, useEffect } from 'react'
+import { Modal } from 'react-bootstrap'
 
-function App() {
+import './App.css'
+import Identity from './components/Identity'
+import Details from './components/Details'
+import Favorites from './components/Favorites'
+import Summary from './components/Summary'
+
+const App = () => {
+  const [step, setStep] = useState(1)
+  const [formData, setFormData] = useState({})
+  const [show, setShow] = useState(false)
+
+  useEffect(() => {
+    setTimeout(() => setShow(true), 2000)
+  }, [])
+
+  const handleClose = () => setShow(false)
+
+  const nextStep = () => {
+    setStep(step + 1)
+  }
+
+  const prevStep = () => {
+    setStep(step - 1)
+  }
+
+  const handleInputData = (data) => {
+    setFormData({ ...formData, ...data })
+  }
+
+  let content
+
+  switch (step) {
+    case 1:
+      content = (
+        <Identity nextStep={nextStep} handleFormData={handleInputData} />
+      )
+      break
+    case 2:
+      content = (
+        <Details
+          handleFormData={handleInputData}
+          values={formData}
+          nextStep={nextStep}
+          prevStep={prevStep}
+        />
+      )
+      break
+    case 3:
+      content = (
+        <Favorites
+          handleFormData={handleInputData}
+          values={formData}
+          nextStep={nextStep}
+          prevStep={prevStep}
+        />
+      )
+      break
+    default:
+      content = <Summary values={formData} close={handleClose} />
+      break
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='App'>
+      <Modal show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>Survey</Modal.Title>
+        </Modal.Header>
+        {content}
+      </Modal>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App

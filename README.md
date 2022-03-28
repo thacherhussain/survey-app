@@ -1,3 +1,30 @@
+# Survey App
+
+## What I did
+
+- Reviewed assignment as if it were a product brief
+- Outlined the screens/pages that would be needed
+- Spun up a fresh create-react-app
+- Added in `react-hook-form` and `react-bootstrap`
+- Created the form components and made sure the data was coming through in a way that would support displaying it in the summary
+- Added form components into larger components that would make up each screen of the survey and got the survey working without being in a modal
+- Put the survey into a modal first working with a show/hide button
+- Removed the show/hide button in favor of setTimeout in a useEffect
+
+## What I would do better
+
+- create more reusable components to simplify the individual screens, ex. reusable `react-hook-form` components rather than the more verbose way that they're used here
+- Better styling, minimal styling of individual components unless absolutely necessary
+- Add in a few tests for functional logic
+
+## With more time
+
+- finish the assignment by spinning this small application out into a package that would enable it to be used in the header of another application
+
+## What did I learn from this
+
+-
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
@@ -38,12 +65,6 @@ If you aren't satisfied with the build tool and configuration choices, you can `
 Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
 You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
 
 ### Code Splitting
 
