@@ -11,6 +11,10 @@ const Favorites = (props) => {
     getValues,
   } = useForm()
 
+  const isColorChecked = (currentColor) => {
+    return values?.color?.includes(currentColor)
+  }
+
   const onSubmit = () => {
     const newFormData = getValues()
     handleFormData({ ...values, ...newFormData })
@@ -25,6 +29,7 @@ const Favorites = (props) => {
           <Form.Control
             type='text'
             name='favoriteBook'
+            defaultValue={values.favoriteBook}
             {...register('favoriteBook', { required: true })}
           />
           {errors.favoriteBook && (
@@ -42,6 +47,7 @@ const Favorites = (props) => {
             id={'color-red'}
             label={'Red'}
             value={'red'}
+            defaultChecked={isColorChecked('red')}
           />
           <Form.Check
             {...register('color', { required: true })}
@@ -50,6 +56,7 @@ const Favorites = (props) => {
             id={'color-blue'}
             label={'Blue'}
             value={'blue'}
+            defaultChecked={isColorChecked('blue')}
           />
           <Form.Check
             {...register('color', { required: true })}
@@ -58,6 +65,7 @@ const Favorites = (props) => {
             id={'color-yellow'}
             label={'Yellow'}
             value={'yellow'}
+            defaultChecked={isColorChecked('yellow')}
           />
           {errors.color && (
             <div className='mb-3' style={{ color: 'red' }}>
@@ -72,7 +80,7 @@ const Favorites = (props) => {
             Previous
           </Button>
           <Button variant={'primary'} type={'submit'}>
-            Submit
+            Continue
           </Button>
         </Stack>
       </Modal.Footer>

@@ -28,6 +28,7 @@ const App = () => {
 
   const handleInputData = (data) => {
     setFormData({ ...formData, ...data })
+    console.log(data)
   }
 
   let content
@@ -35,7 +36,11 @@ const App = () => {
   switch (step) {
     case 1:
       content = (
-        <Identity nextStep={nextStep} handleFormData={handleInputData} />
+        <Identity
+          nextStep={nextStep}
+          handleFormData={handleInputData}
+          values={formData}
+        />
       )
       break
     case 2:
@@ -59,7 +64,9 @@ const App = () => {
       )
       break
     default:
-      content = <Summary values={formData} close={handleClose} />
+      content = (
+        <Summary values={formData} prevStep={prevStep} close={handleClose} />
+      )
       break
   }
 

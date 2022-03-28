@@ -11,19 +11,16 @@
 - Put the survey into a modal first working with a show/hide button
 - Removed the show/hide button in favor of setTimeout in a useEffect
 
-## What I would do better
+## With more time
 
+- Figure out more about how to package the build more neatly/do it better (this is the first time I've tried this)
 - create more reusable components to simplify the individual screens, ex. reusable `react-hook-form` components rather than the more verbose way that they're used here
 - Better styling, minimal styling of individual components unless absolutely necessary
 - Add in a few tests for functional logic
 
-## With more time
-
-- finish the assignment by spinning this small application out into a package that would enable it to be used in the header of another application
-
 ## What did I learn from this
 
--
+- how to use build files to inject a react application into a basic webpage
 
 # Getting Started with Create React App
 

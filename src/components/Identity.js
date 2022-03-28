@@ -1,8 +1,10 @@
+// import { useEffect } from 'react'
+
 import { useForm } from 'react-hook-form'
 import { Form, Button, Modal } from 'react-bootstrap'
 
 const Identity = (props) => {
-  const { nextStep, handleFormData } = props
+  const { nextStep, handleFormData, values } = props
   const { register, handleSubmit, getValues } = useForm()
 
   const onSubmit = () => {
@@ -17,6 +19,7 @@ const Identity = (props) => {
           <Form.Control
             type='text'
             name='name'
+            defaultValue={values.name}
             placeholder='Name (optional)'
             {...register('name')}
           />
@@ -25,7 +28,7 @@ const Identity = (props) => {
           <Form.Control
             type='email'
             name={'email'}
-            // defaultValue={'e@m.c'}
+            defaultValue={values.email}
             placeholder={'Email (optional)'}
             {...register('email')}
           />

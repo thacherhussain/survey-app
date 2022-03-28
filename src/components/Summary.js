@@ -1,11 +1,10 @@
 import React from 'react'
-import { Modal, Button, Container } from 'react-bootstrap'
+import { Modal, Button, Container, Stack } from 'react-bootstrap'
 
 const Summary = (props) => {
-  const { values, close } = props
+  const { values, prevStep, close } = props
 
   const { name, email, age, gender, favoriteBook, color } = values
-  console.log(`colors: ${color}`)
 
   const items = color.map((item) => {
     return <li>{item}</li>
@@ -27,9 +26,14 @@ const Summary = (props) => {
         </Container>
       </Modal.Body>
       <Modal.Footer>
-        <Button variant={'primary'} type={'submit'} onClick={close}>
-          Close
-        </Button>
+        <Stack direction='horizontal' gap={3}>
+          <Button variant={'primary'} onClick={() => prevStep()}>
+            Previous
+          </Button>
+          <Button variant={'primary'} onClick={close}>
+            Submit
+          </Button>
+        </Stack>
       </Modal.Footer>
     </React.Fragment>
   )

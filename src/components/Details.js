@@ -10,6 +10,12 @@ const Details = (props) => {
     getValues,
   } = useForm()
 
+  const getGender = (input) => {
+    if (input === values.gender) {
+      return true
+    }
+  }
+
   const onSubmit = () => {
     const newFormData = getValues()
     handleFormData({ ...values, ...newFormData })
@@ -20,7 +26,10 @@ const Details = (props) => {
     <Form onSubmit={handleSubmit(onSubmit)}>
       <Modal.Body>
         <Form.Label>How old are you?</Form.Label>
-        <Form.Select className='mb-3' {...register('age', { required: true })}>
+        <Form.Select
+          className='mb-3'
+          defaultValue={values.age}
+          {...register('age', { required: true })}>
           <option></option>
           <option value={'0-18'}>0-18 years</option>
           <option value={'19-25'}>19-25 years</option>
@@ -44,6 +53,7 @@ const Details = (props) => {
             id={'gender-male'}
             label={'Male'}
             value={'Male'}
+            defaultChecked={getGender('Male')}
           />
           <Form.Check
             {...register('gender', { required: true })}
@@ -52,6 +62,7 @@ const Details = (props) => {
             id={'gender-female'}
             label={'Female'}
             value={'Female'}
+            defaultChecked={getGender('Female')}
           />
           <Form.Check
             {...register('gender', { required: true })}
@@ -60,6 +71,7 @@ const Details = (props) => {
             id={'gender-outside'}
             label={'Neither of those fit me'}
             value={'Neither'}
+            defaultChecked={getGender('Neither')}
           />
           {errors.gender && (
             <div className='mb-3' style={{ color: 'red' }}>
